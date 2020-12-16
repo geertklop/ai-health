@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "ai-for-medicine"
+version = "0.1.0"
+description = ""
+authors = ["geertklop <geert@xomnia.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.19.4"
+tensorflow = "^2.4.0"
+matplotlib = "^3.3.3"
+seaborn = "^0.11.0"
+pandas = "^1.1.5"
+itk = "^5.1.2"
+itkwidgets = "^0.32.0"
+ipywidgets = "^7.5.1"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^5.4.2"
+jupyterlab = "^2.2.9"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
