@@ -1,1 +1,1 @@
-# ai-for-medicine
+# ai-health
