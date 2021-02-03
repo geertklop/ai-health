@@ -1,10 +1,8 @@
-from .parts import (
-    ContractionModule,
-    DoubleConv,
-    ExpansionModule,
-)
+import tensorflow as tf
+from tensorflow.keras.layers import Conv2D, Input, Layer
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Layer, Conv2D
+
+from .parts import ContractionModule, DoubleConv, ExpansionModule
 
 
 class UNet(Model):
@@ -59,4 +57,16 @@ class UNet(Model):
         self.up4 = ExpansionModule(filters, padding=padding)
 
         # Output layer
-        self.out = Conv2D(1, kernel_size=(1, 1), activation="sigmoid")
+        self.out = Conv2D(self._out_channels, kernel_size=(1, 1), activation="sigmoid")
+
+
+if __name__ == "__main__":
+    model = UNet()
+    model.compile(
+        optimizer="adam",
+        loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+        metrics=["accuracy"],
+    )
+
+    model.build((None, 128, 128, 1))
+    model.summary()
